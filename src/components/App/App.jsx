@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
+import Header from '../Header/Header';
+import CreatureList from '../CreatureList/CreatureList';
 
 import './App.css';
 
@@ -60,7 +62,7 @@ function App () {
   
   return (
     <div className="App">
-      <h2>Add Creature</h2>
+      <Header title='Add Creature'/>
       <form onSubmit={handleSubmit}>
         <label>Name:</label>
         <input 
@@ -73,12 +75,9 @@ function App () {
           value={newCreatureOrigin}/>
         <button type="submit">Add New Creature</button>
       </form>
-      <h2>All Creatures</h2>
-      <ul>
-        {creatureList.map(creature => 
-         (<li key={creature.id}>{creature.name} is from {creature.origin}</li>)
-        )}
-      </ul>
+      <Header title='All Creatures'/>
+      {/* <ComponentName PropertySetByComponent={variable inside App.jsx} */}
+      <CreatureList creatureList={creatureList} />
     </div>
   );
 
